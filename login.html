@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles1.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="text/javascript">
+        function login() {
+            var user = document.getElementById("username").value;
+            var pass = document.getElementById("password").value;
+            var storedUser = localStorage.getItem('username');
+            var storedPass = localStorage.getItem('password');
+            if(user == storedUser && pass == storedPass) {
+                alert("Logged In");
+                window.location.href = "index.html";
+                return false;
+            } else {
+                alert("Incorrect username or password");
+                return false;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+    var registerLink = document.getElementById("register-link");
+
+    registerLink.addEventListener("click", function(event) {
+        event.preventDefault(); 
+        window.location.href = "register.html"; 
+    });
+});
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <form onsubmit="return login();">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" id="username" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+            <div class="register-link">
+                <p>Don't have an account? <a href="#" id="register-link">Register</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
